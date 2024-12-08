@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FWI Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>FWI Prediction</h1>
+    <form action="{{ url_for('predict_datapoint') }}" method="post">
+        <label for="temperature">Temperature (°C):</label>
+        <input type="number" id="temperature" name="temperature" step="0.1" required>
+
+        <label for="rh">Relative Humidity (%):</label>
+        <input type="number" id="rh" name="rh" step="0.1" required>
+
+        <label for="ws">Wind Speed (km/h):</label>
+        <input type="number" id="ws" name="ws" step="0.1" required>
+
+        <label for="rain">Rain (mm):</label>
+        <input type="number" id="rain" name="rain" step="0.1" required>
+
+        <label for="ffmc">Fine Fuel Moisture Code (FFMC):</label>
+        <input type="number" id="ffmc" name="ffmc" step="0.1" required>
+
+        <label for="dmc">Duff Moisture Code (DMC):</label>
+        <input type="number" id="dmc" name="dmc" step="0.1" required>
+
+        <label for="isi">Initial Spread Index (ISI):</label>
+        <input type="number" id="isi" name="isi" step="0.1" required>
+
+        <label for="classes">Fire Danger Classes:</label>
+        <input type="text" id="classes" name="classes" required>
+
+        <label for="region">Region:</label>
+        <input type="text" id="region" name="region" required>
+
+        <input type="submit" value="Submit Prediction Data">
+    </form>
+    <h2>
+        The FWI prediction is {{ results }}
+    </h2>
+</body>
+</html>
